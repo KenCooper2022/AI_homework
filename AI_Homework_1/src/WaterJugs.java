@@ -5,7 +5,7 @@ public class WaterJugs  {
     public WaterJugs( ) {
     }
 
-    public static Node DepthFirstSearch(State S0, State goal) {
+    public static ArrayList<Node> DepthFirstSearch(State S0, State goal) {
         Node n = new Node(S0,null);
         Stack<Node>open = new Stack<Node>();
         open.add(n);
@@ -13,8 +13,8 @@ public class WaterJugs  {
         while (!open.isEmpty()) {
             State nState= n.getState();
             if ( nState.getX()== goal.getX() && nState.getY()==goal.getY()) {
-                System.out.println("this is the number of nodes :"+  count);
-                return n;
+                System.out.println("this is the number of nodes created in depth first search :"+  count);
+                return goalPathFinder(n);
             }else{
                 visited.add(n.getState());
             }
@@ -34,7 +34,7 @@ public class WaterJugs  {
 
         return null;
     }
-    public static Node BreadthFirstSearch(State S0, State  goal) {
+    public static ArrayList<Node>BreadthFirstSearch(State S0, State  goal) {
         Node n = new Node(S0,null);
         Queue<Node>open = new LinkedList<Node>();
         open.add(n);
@@ -42,12 +42,10 @@ public class WaterJugs  {
         while (!open.isEmpty()) {
             State nState= n.getState();
             if ( nState.getX()== goal.getX() && nState.getY()==goal.getY()) {
-                System.out.println("this is the number of nodes " + count);
-                return n;
+                System.out.println("this is the number of nodes created in breadth first search " + count);
+                return goalPathFinder(n);
             }else{
-
                 visited.add(n.getState());
-
             }
             n=open.remove();
             for (int i = 0; i <n.expand().size(); i++) {
@@ -55,7 +53,6 @@ public class WaterJugs  {
                 if(visited.contains(m.getState())){
                     continue;
                 }else{
-
                 }
                 open.add(m);
                 count++;
@@ -86,9 +83,8 @@ public class WaterJugs  {
         State goal = new State(2,0);
         //Depth First
         //the path for breadthfirst
-        System.out.println(goalPathFinder(BreadthFirstSearch(start,goal)));
-        System.out.println(goalPathFinder(DepthFirstSearch(start,goal)));;
-
+        System.out.println(BreadthFirstSearch(start,goal));
+        System.out.println(DepthFirstSearch(start,goal));
 
 
     }
