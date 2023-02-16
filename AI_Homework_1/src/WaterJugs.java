@@ -14,6 +14,7 @@ public class WaterJugs  {
             State nState= n.getState();
             if ( nState.getX()== goal.getX() && nState.getY()==goal.getY()) {
                 System.out.println("this is the number of nodes created in depth first search :"+  count);
+                System.out.println("this is the depth first path");
                 return goalPathFinder(n);
             }else{
                 visited.add(n.getState());
@@ -43,6 +44,7 @@ public class WaterJugs  {
             State nState= n.getState();
             if ( nState.getX()== goal.getX() && nState.getY()==goal.getY()) {
                 System.out.println("this is the number of nodes created in breadth first search " + count);
+                System.out.println("this is the breadth first path :");
                 return goalPathFinder(n);
             }else{
                 visited.add(n.getState());
@@ -87,11 +89,15 @@ public class WaterJugs  {
         // start state
         State start = new State(0,0);
         //goal state
-        State goal = new State(2,0);
+        State goal = new State(2,3);
+        State start2 = new State(0,0);
+        //goal state 2
+        State goal2 = new State(2,0);
         //Depth First
-        //the path for breadthfirst
+        //the path for breadthfirst and its node count
         System.out.println(BreadthFirstSearch(start,goal));
-        System.out.println(DepthFirstSearch(start,goal));
+        //the path for depth first and its node count
+        System.out.println(DepthFirstSearch(start2,goal2));
 
 
     }
