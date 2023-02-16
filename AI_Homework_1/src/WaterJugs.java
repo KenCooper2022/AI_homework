@@ -72,7 +72,14 @@ public class WaterJugs  {
             nodesFromGoal.add(node.getParent());
             node=node.getParent();
         }
-        return nodesFromGoal;
+        return reverseArrayList(nodesFromGoal);
+    }
+    public static ArrayList<Node> reverseArrayList(ArrayList<Node>list){
+        ArrayList<Node>reversedList = new ArrayList<Node>();
+        for(int i = list.size()-1;i>=0;i--){
+            reversedList.add(list.get(i));
+        }
+        return reversedList;
     }
 
 
